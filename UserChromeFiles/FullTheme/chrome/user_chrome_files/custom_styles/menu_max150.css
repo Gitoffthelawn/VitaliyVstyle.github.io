@@ -1,20 +1,30 @@
 /**
-@UCF @param {"prop":"CssChrome","type":"USER_SHEET","ver":{"min":151}} @UCF
-@UCF @param {"prop":"CssContent","type":"USER_SHEET","ver":{"min":151}} @UCF
+@UCF @param {"prop":"CssChrome","type":"USER_SHEET","ver":{"max":150}} @UCF
+@UCF @param {"prop":"CssContent","type":"USER_SHEET","ver":{"max":150}} @UCF
 */
 @-moz-document url-prefix("chrome:"), url-prefix("about:") {
     /* menu --> */
     :root {
         --v-menupopup-item-min-height: 24px;
         --v-panel-item-min-height: 24px;
+        --v-menupopup-item-max-width: 42em;
         --v-menupopup-text-inline-start: 4px;
-        --panel-color: FieldText;
-        --panel-background: Field;
-        --panel-border-color: ThreeDShadow;
-        --panel-border-radius: 0px !important;
-        --panel-dimmed: color-mix(in srgb, currentColor 20%, transparent);
-        --panel-dimmed-further: color-mix(in srgb, currentColor 10%, transparent);
-        --panel-separator-color: color-mix(in srgb, currentColor 20%, transparent);
+        --v-menu-color: var(--arrowpanel-color, FieldText);
+        --v-menu-background-color: var(--arrowpanel-background, Field);
+        --v-menu-border-color: var(--arrowpanel-border-color, ThreeDShadow);
+        --v-panel-separator-color: var(--panel-separator-color, ThreeDShadow);
+        --v-arrowpanel-dimmed: var(--arrowpanel-dimmed, color-mix(in srgb, currentColor 20%, transparent));
+        --v-arrowpanel-dimmed-further: var(--arrowpanel-dimmed-further, color-mix(in srgb, currentColor 10%, transparent));
+        --arrowpanel-border-radius: 0px !important;
+        --arrowpanel-padding: 10px !important;
+        --arrowpanel-menuitem-margin-block: 0px !important;
+        --arrowpanel-menuitem-margin-inline: 0px !important;
+        --arrowpanel-menuitem-margin: var(--arrowpanel-menuitem-margin-block) var(--arrowpanel-menuitem-margin-inline) !important;
+        --arrowpanel-menuitem-padding-block: 0px !important;
+        --arrowpanel-menuitem-padding-inline: 8px !important;
+        --arrowpanel-menuitem-padding: var(--arrowpanel-menuitem-padding-block) var(--arrowpanel-menuitem-padding-inline) !important;
+        --arrowpanel-menuitem-border-radius: 0px !important;
+        --arrowpanel-shadow-margin: 10px !important;
         --panel-separator-margin-vertical: 0px !important;
         --panel-separator-margin-horizontal: 0px !important;
         --panel-separator-margin: var(--panel-separator-margin-vertical) var(--panel-separator-margin-horizontal) !important;
@@ -24,47 +34,38 @@
         --panel-subview-body-padding-block: 0px !important;
         --panel-subview-body-padding-inline: 0px !important;
         --panel-subview-body-padding: var(--panel-subview-body-padding-block) var(--panel-subview-body-padding-inline) !important;
-        --panel-menuitem-border-radius: 0px !important;
-        --panel-menuitem-margin-block: 0px !important;
-        --panel-menuitem-margin-inline: 0px !important;
-        --panel-menuitem-margin: var(--panel-menuitem-margin-block) var(--panel-menuitem-margin-inline) !important;
-        --panel-menuitem-padding-block: 0px !important;
-        --panel-menuitem-padding-inline: 8px !important;
-        --panel-menuitem-padding: var(--panel-menuitem-padding-block) var(--panel-menuitem-padding-inline) !important;
-        --panel-padding-block: var(--panel-subview-body-padding-block) !important;
-        --panel-padding-inline: var(--panel-subview-body-padding-inline) !important;
-        --panel-padding: var(--panel-padding-block) var(--panel-padding-inline) !important;
-        --panel-shadow-margin: 10px !important;
-        --panel-shadow: 0 0 var(--panel-shadow-margin) rgba(0, 0, 0, .2) !important;
-        --menuitem-border-radius: var(--panel-menuitem-border-radius) !important;
-        --menuitem-padding: var(--panel-menuitem-padding) !important;
-        --menuitem-max-width: 42em !important;
-        --menuitem-margin: var(--panel-menuitem-margin) !important;
+
         &.sidebar-panel[lwt-sidebar] {
-            --panel-color: var(--sidebar-text-color, FieldText) !important;
-            --panel-background: var(--sidebar-background-color, Field) !important;
-            --panel-border-color: color-mix(in srgb, currentColor 20%, transparent) !important;
+            --v-menu-color: var(--sidebar-text-color, var(--lwt-sidebar-text-color, FieldText));
+            --v-menu-background-color: var(--sidebar-background-color, var(--lwt-sidebar-background-color, Field));
+            --v-menu-border-color: color-mix(in srgb, currentColor 20%, transparent);
+            --v-panel-separator-color: color-mix(in srgb, currentColor 20%, transparent);
+            --v-arrowpanel-dimmed: color-mix(in srgb, currentColor 20%, transparent);
+            --v-arrowpanel-dimmed-further: color-mix(in srgb, currentColor 10%, transparent);
         }
         &:is(.theme-light, .theme-dark) {
-            --panel-color: var(--theme-popup-color, FieldText) !important;
-            --panel-background: var(--theme-popup-background, Field) !important;
-            --panel-border-color: var(--theme-popup-border-color, color-mix(in srgb, currentColor 20%, transparent)) !important;
+            --v-menu-color: var(--theme-arrowpanel-color, FieldText);
+            --v-menu-background-color: var(--theme-arrowpanel-background, Field);
+            --v-menu-border-color: var(--theme-arrowpanel-border-color, color-mix(in srgb, currentColor 20%, transparent));
+            --v-panel-separator-color: var(--theme-arrowpanel-separator, color-mix(in srgb, currentColor 20%, transparent));
+            --v-arrowpanel-dimmed: var(--theme-arrowpanel-dimmed, color-mix(in srgb, currentColor 20%, transparent));
+            --v-arrowpanel-dimmed-further: var(--theme-arrowpanel-dimmed-further, color-mix(in srgb, currentColor 10%, transparent));
         }
     }
     menupopup, panel[type] {
-        --panel-background: inherit !important;
-        --panel-color: inherit !important;
-        --panel-border-color: inherit !important;
-        --panel-border-radius: inherit !important;
-        --panel-padding-block: inherit !important;
-        --panel-padding-inline: inherit !important;
-        --panel-padding: inherit !important;
-        --panel-shadow-margin: inherit !important;
-        --panel-shadow: inherit !important;
-        --menuitem-border-radius: inherit !important;
-        --menuitem-padding: inherit !important;
-        --menuitem-max-width: inherit !important;
-        --menuitem-margin: inherit !important;
+        --panel-background: var(--v-menu-background-color) !important;
+        --panel-color: var(--v-menu-color) !important;
+        --panel-border-color: var(--v-menu-border-color) !important;
+        --panel-border-radius: var(--arrowpanel-border-radius) !important;
+        --panel-padding-block: var(--panel-subview-body-padding-block) !important;
+        --panel-padding-inline: var(--panel-subview-body-padding-inline) !important;
+        --panel-padding: var(--panel-padding-block) var(--panel-padding-inline) !important;
+        --panel-shadow-margin: var(--arrowpanel-shadow-margin) !important;
+        --panel-shadow: 0 0 var(--arrowpanel-shadow-margin) rgba(0, 0, 0, .2) !important;
+        --menuitem-border-radius: var(--arrowpanel-menuitem-border-radius) !important;
+        --menuitem-padding: var(--arrowpanel-menuitem-padding) !important;
+        --menuitem-max-width: var(--v-menupopup-item-max-width) !important;
+        --menuitem-margin: var(--arrowpanel-menuitem-margin) !important;
         appearance: none !important;
         border-radius: 0 !important;
         box-shadow: none !important;
@@ -102,16 +103,16 @@
                 margin-block: 2px !important;
                 flex-grow: 1 !important;
                 border: none !important;
-                border-top: 1px solid var(--panel-separator-color) !important;
+                border-top: 1px solid var(--v-panel-separator-color) !important;
             }
         }
         menu, menuitem, menucaption {
             appearance: none !important;
-            border-radius: var(--panel-menuitem-border-radius) !important;
+            border-radius: var(--arrowpanel-menuitem-border-radius) !important;
             min-height: var(--v-menupopup-item-min-height) !important;
-            padding: var(--panel-menuitem-padding) !important;
+            padding: var(--arrowpanel-menuitem-padding) !important;
             margin: 0 !important;
-            color: var(--panel-color);
+            color: var(--v-menu-color);
         }
         .menu-text {
             appearance: none !important;
@@ -134,7 +135,7 @@
             -moz-context-properties: fill, fill-opacity;
             fill: currentColor !important;
             fill-opacity: 1 !important;
-            color: var(--panel-color) !important;
+            color: var(--v-menu-color) !important;
             visibility: visible !important;
         }
         &>menu::after {
@@ -150,19 +151,19 @@
             background-position: center !important;
         }
         :where(:not(#ContentSelectDropdown))>& :is(menu, menuitem, menucaption) {
-            color: var(--panel-color) !important;
+            color: var(--v-menu-color) !important;
         }
         :is(menu, menuitem)[_moz-menuactive=true] {
-            background: var(--panel-dimmed);
+            background: var(--v-arrowpanel-dimmed);
         }
         :where(:not(#ContentSelectDropdown))>& :is(menu, menuitem)[_moz-menuactive=true] {
-            background: var(--panel-dimmed) !important;
+            background: var(--v-arrowpanel-dimmed) !important;
         }
         :is(menu, menuitem)[_moz-menuactive=true]:active {
-            background: var(--panel-dimmed-further);
+            background: var(--v-arrowpanel-dimmed-further);
         }
         :where(:not(#ContentSelectDropdown))>& :is(menu, menuitem)[_moz-menuactive=true]:active {
-            background: var(--panel-dimmed-further) !important;
+            background: var(--v-arrowpanel-dimmed-further) !important;
         }
         :where(:not(#ContentSelectDropdown))>& :is(menu, menuitem, menucaption)[disabled]:not([disabled=false]) {
             opacity: 0.6 !important;
@@ -208,12 +209,8 @@
     .subview-subheader,
     panelview .toolbarbutton-1,
     .subviewbutton,
-    .widget-overflow-list .toolbarbutton-1,
-    button[role=menuitem][part=button] {
+    .widget-overflow-list .toolbarbutton-1 {
         min-height: var(--v-panel-item-min-height) !important;
-    }
-    .searchmode-switcher-panel-list {
-        --space-small: var(--panel-menuitem-margin-block) !important;
     }
     /* <-- menu */
 
@@ -242,14 +239,14 @@
         padding-inline-start: var(--v-icons-text-padding-inline-start) !important;
     }
     #appMenu-zoom-controls {
-        margin: var(--panel-menuitem-margin, 0) !important;
+        margin: var(--arrowpanel-menuitem-margin, 0) !important;
     }
     #appMenu-fxa-status2:not([fxastatus]) {
         padding-inline: 0 !important;
     }
     #appMenu-fxa-status2:not([fxastatus])>#appMenu-fxa-label,
     #appMenu-fxa-status2:not([fxastatus])>#appMenu-fxa-label2 {
-        padding: var(--panel-menuitem-padding, var(--v-icons-text-padding-inline-start)) !important;
+        padding: var(--arrowpanel-menuitem-padding, var(--v-icons-text-padding-inline-start)) !important;
         order: -1 !important;
         margin: 0 !important;
         margin-inline-end: var(--v-icons-text-padding-inline-start) !important;
@@ -259,8 +256,8 @@
         order: 1 !important;
     }
     #appMenu-popup :is(.addon-banner-item, .panel-banner-item) {
-        padding: var(--panel-menuitem-padding, var(--v-icons-text-padding-inline-start)) !important;
-        margin: var(--panel-menuitem-margin, 0) !important;
+        padding: var(--arrowpanel-menuitem-padding, var(--v-icons-text-padding-inline-start)) !important;
+        margin: var(--arrowpanel-menuitem-margin, 0) !important;
         margin-block: 0 4px !important;
     }
     #appMenu-popup :is(.addon-banner-item, .panel-banner-item)>.toolbarbutton-text {

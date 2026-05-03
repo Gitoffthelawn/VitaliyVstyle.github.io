@@ -24,7 +24,8 @@
         --size-item-medium: 22px !important;
     }
     :root, dialog, .dialogBox, menu-button, login-filter, login-item, login-intro, login-list, fxaccounts-button, remove-logins-dialog,
-    import-error-dialog, import-summary-dialog, confirmation-dialog, info-item, message-bar, addon-updates-message {
+    import-error-dialog, import-summary-dialog, confirmation-dialog, info-item, message-bar, addon-updates-message,
+    moz-box-link, moz-box-button {
         --in-content-icon-color: #5b5b65 !important;
         --in-content-primary-button-text-color: #ffffff !important;
         --in-content-primary-button-text-color-hover: var(--in-content-primary-button-text-color) !important;
@@ -84,10 +85,6 @@
         --info-box-background-color: #55555f !important;
         --info-box-border-color: var(--grey-90-a30) !important;
         --exception-button-container-background: #ebebf5 !important;
-        --arrowpanel-background: Field !important;
-        --arrowpanel-color: FieldText !important;
-        --arrowpanel-border-color: ThreeDShadow !important;
-        --arrowpanel-dimmed: rgba(204, 204, 214, 0.35) !important;
         --panel-disabled-color: GrayText !important;
         --panel-border-radius: 0px !important;
         --card-border-radius: 0px !important;
@@ -95,6 +92,7 @@
         --color-accent-primary-hover: color-mix(in srgb, rgb(255, 255, 255) 15%, var(--color-accent-primary)) !important;
         --color-accent-primary-active: color-mix(in srgb, rgb(0, 0, 0) 10%, var(--color-accent-primary)) !important;
         --color-accent-primary-selected: var(--blue-60) !important;
+        --table-header-text-color: #ffffff !important;
 
         --magenta-50: #ff1ad9 !important;
         --magenta-65: #dd00a9 !important;
@@ -243,7 +241,7 @@
             --in-content-border-active-shadow: var(--blue-50) !important;
             --in-content-border-invalid: var(--red-50) !important;
             --in-content-border-invalid-shadow: var(--red-50-a30) !important;
-            --in-content-border-color: #3c3c46 !important;
+            --in-content-border-color: var(--grey-90-a30) !important;
             --in-content-error-text-color: #e31b5d !important;
             --in-content-tab-color: #a2c1db !important;
             --in-content-link-color: var(--blue-60) !important;
@@ -275,10 +273,6 @@
             --info-box-background-color: #55555f !important;
             --info-box-border-color: #3c3c46 !important;
             --exception-button-container-background: #1b1b25 !important;
-            --arrowpanel-background: #1b1b25 !important;
-            --arrowpanel-color: #b1b1bb !important;
-            --arrowpanel-border-color: #3c3c46 !important;
-            --arrowpanel-dimmed: rgba(245, 245, 255, 0.1) !important;
             --panel-disabled-color: GrayText !important;
             --color-accent-primary: var(--blue-60) !important;
             --color-accent-primary-hover: color-mix(in srgb, rgb(255, 255, 255) 15%, var(--color-accent-primary)) !important;
@@ -614,6 +608,14 @@
                 border-color: transparent !important;
             }
         }
+    }
+    #search-container, #toolbar {
+        background-color: transparent !important;
+        background-image: var(--v-content-page-background-image) !important;
+        background-position:  center bottom !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        background-attachment: fixed !important;
     }
     .fxview-tab-row-main {
         padding-block: 0px !important;

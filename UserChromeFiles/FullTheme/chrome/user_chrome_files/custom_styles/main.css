@@ -419,7 +419,6 @@
         #urlbar, [id^=searchbar] {
             --urlbar-margin-inline: 0;
             width: var(--urlbar-width, 100%) !important;
-            height: var(--urlbar-height) !important;
             margin: 0 !important;
             padding: 0 !important;
             position: relative !important;
@@ -443,11 +442,6 @@
                     align-self: stretch !important;
                 }
             }
-            &[breakout-extend],
-            &[breakout-extend-disabled][open] {
-                height: auto !important;
-                margin-top: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2) !important;
-            }
             .urlbar-page-action {
                 align-items: center !important;
                 justify-content: center !important;
@@ -464,6 +458,7 @@
                 box-shadow: none !important;
                 height: var(--urlbar-height) !important;
                 bottom: auto !important;
+                box-sizing: border-box !important;
             }
             &:is([open], [focused])> :is(.urlbar-background, #urlbar-background) {
                 border-color: transparent !important;
@@ -478,15 +473,16 @@
             &>.urlbarView {
                 margin: 0 !important;
                 width: 100% !important;
+                box-sizing: border-box !important;
                 border-radius: var(--v-urlbar-searchbar-border-radius) !important;
                 background: var(--toolbar-field-focus-background-color, Field) !important;
-                border: 1px solid var(--urlbarView-separator-color, var(--arrowpanel-border-color, ThreeDShadow)) !important;
+                border: 1px solid var(--urlbarView-separator-color, ThreeDShadow) !important;
                 border-top: none !important;
                 position: absolute !important;
                 z-index: 7 !important;
                 inset-inline: 0 !important;
                 inset-block: var(--urlbar-height) auto !important;
-                box-shadow: 0 0 var(--arrowpanel-shadow-margin, 0) rgba(0, 0, 0, .2) !important;
+                box-shadow: 0 0 var(--panel-shadow-margin, 10px) rgba(0, 0, 0, .2) !important;
                 .searchbar-engine-one-off-item {
                     margin: 0 !important;
                     min-width: 28px !important;
@@ -536,7 +532,7 @@
         color: inherit !important;
         &>richlistitem.autocomplete-richlistitem {
             &:hover {
-                background-color: var(--arrowpanel-dimmed, color-mix(in srgb, currentColor 20%, transparent)) !important;
+                background-color: var(--panel-dimmed, color-mix(in srgb, currentColor 20%, transparent)) !important;
                 color: inherit !important;
             }
             &[selected] {
@@ -560,7 +556,7 @@
     #PopupSearchAutoComplete {
         --panel-color: var(--toolbar-field-focus-color, FieldText) !important;
         --panel-background: var(--toolbar-field-focus-background-color, Field) !important;
-        --panel-border-color: var(--urlbarView-separator-color, var(--arrowpanel-border-color, ThreeDShadow)) !important;
+        --panel-border-color: var(--urlbarView-separator-color, ThreeDShadow) !important;
         --panel-border-radius: var(--v-urlbar-searchbar-border-radius) !important;
         &>.search-panel-current-engine {
             margin-top: 0px !important;
@@ -605,9 +601,9 @@
     }
     #statuspanel-label {
         appearance: none !important;
-        color: var(--arrowpanel-color, FieldText) !important;
-        background: var(--arrowpanel-background, Field) !important;
-        border: 1px solid var(--arrowpanel-border-color, ThreeDShadow) !important;
+        color: var(--panel-color, light-dark(rgb(12, 12, 22), rgb(177, 177, 187))) !important;
+        background: var(--panel-background, light-dark(rgb(245, 245, 255), rgb(27, 27, 37))) !important;
+        border: 1px solid var(--panel-border-color, color-mix(in srgb, currentColor 25%, transparent)) !important;
         border-radius: 0 !important;
     }
     .dialogBox, menulist, button, textarea, input, .checkbox-check {
@@ -679,7 +675,7 @@
     }
     #appMenu-popup :is(.addon-banner-item, .panel-banner-item) {
         border-radius: 0 !important;
-        margin: var(--arrowpanel-menuitem-margin) !important;
+        margin: var(--panel-menuitem-margin, 0) !important;
         margin-block: 0 4px !important;
     }
 
